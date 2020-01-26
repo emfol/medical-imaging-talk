@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+main {
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.56);
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1em;
+  color: #fff;
+  background-image: url('../images/texture-c.jpg');
+  background-position: 50% 50%;
+  background-repeat: repeat;
+  background-color: #777;
+  background-attachment: fixed;
+}
+
+main > article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Temp */
+  top: 0;
+  opacity: 1;
+}
+
+main > article > h1 {
+  margin: 0.56em 0;
+}
+
+main > article > ul {
+  /*
+  list-style-type: "\1F449";
+  list-style-type: "\2714";
+  list-style-type: "\264F";
+  */
+  list-style-type: "\1F680";
+}
