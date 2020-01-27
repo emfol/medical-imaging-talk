@@ -25,13 +25,18 @@ main > article > h1 {
   margin: 0.56em 0;
 }
 
+main > article > div.default-content {
+  max-width: 1280px;
+}
+
 main > article > div.default-content ul {
   /*
   list-style-type: "\1F449";
   list-style-type: "\2714";
   list-style-type: "\264F";
-  */
   list-style-type: "\1F680";
+  */
+  list-style-type: "\1F489";
 }
 
 main > article > div.default-content img {
@@ -43,6 +48,7 @@ main > article > div > div#dicomImageLungCt {
   margin: 24px 0 0 0;
   width: 480px;
   height: 480px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.72);
 }
 
 main > article > div.default-content > div#dicomImageLungCtInfo {
