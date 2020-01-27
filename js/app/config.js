@@ -16,7 +16,10 @@ define(function () {
         make_the_subject_less_obscure: 'Tornar o assunto menos obscuro',
         what_some_think_it_is: 'Imagina-se que seja isso:',
         or_this: '... e isso:',
-        what_it_actually_is: 'Na verdade é isso:'
+        what_it_actually_is: 'Na verdade é isso:',
+        what_is_different: 'O que é diferente?',
+        acquisition_method: 'Método de aquisição',
+        file_format_and_storage: 'Armazenamento e formato de arquivo',
       }
     }
   }
