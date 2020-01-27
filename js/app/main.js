@@ -1,13 +1,12 @@
 
-define(['stopwatch'], function (stopwatch) {
-  console.log('It Works!');
-  const canvas = document.querySelector('section.timer > canvas');
-  if (canvas) {
-    const s = stopwatch(canvas, 10, 4, function (context) {
-      console.log('stopwatch', context);
-    });
-    document.body.addEventListener('click', function () {
-      s.walk();
-    }, false);
-  }
+define([
+  'query',
+  'i18n',
+  './slides',
+  './config'
+], function (query, i18n, slides, config) {
+  console.info('Ready!');
+  const lang = query.get('lang') || 'en_US';
+  i18n(document.querySelector('main'), config.i18n[lang]);
+  slides.init();
 });

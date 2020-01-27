@@ -7,6 +7,7 @@ define(function () {
    */
 
   const MIN_PERIOD = 50;
+  const CIRC = 2.0 * Math.PI;
 
   /**
    * Globals
@@ -26,14 +27,27 @@ define(function () {
     context.timerId = 0;
     if (!context.killed) {
       context.initTimeStamp = timeStamp;
-      context.lastTickTimeStamp = timeStamp;
+      context.lastUpdateTimeStamp = timeStamp;
       context.taskStats[0].initTimeStamp = timeStamp;
       schedule(context, tick);
     }
   }
 
-  function render() {
-    // Nothing yet...
+  function render(context) {
+    const { targetCanvas } = context;
+    const { width, height } = targetCanvas;
+    const r = Math.min(width, height) * 0.5 - 2.0;
+    const a = getElapsedTimeRatio(context) * CIRC;
+    const g = targetCanvas.getContext('2d');
+    g.setTransform(1.0, 0.0, 0.0, 1.0, 0.0, 0.0);
+    g.clearRect(0, 0, width, height);
+    g.setTransform(0.0, -1.0, 1.0, 0.0, width * 0.5, height * 0.5);
+    g.beginPath();
+    g.moveTo(r, 0.0);
+    g.lineTo(0.0, 0.0);
+    g.lineTo(Math.cos(a) * r, Math.sin(a) * r);
+    g.arc(0.0, 0.0, r, a, CIRC, false);
+    g.fill();
   }
 
   function schedule(context, action) {
@@ -45,11 +59,13 @@ define(function () {
   }
 
   function update(context, timeStamp) {
-    let shouldResetTimer = true;
-    const elapsedTime = timeStamp - context.initTimeStamp;
+    let elapsedTime, shouldResetTimer = true;
 
     // update previous time stamp first
-    context.lastTickTimeStamp = timeStamp;
+    context.lastUpdateTimeStamp = timeStamp;
+
+    // calc elapsed time
+    elapsedTime = getElapsedTime(context);
 
     // check if the current task completed
     if (context.currentTaskCompleted) {
@@ -82,15 +98,24 @@ define(function () {
 
   function tick(context, timeStamp) {
     context.timerId = 0;
-    const elapsedTimeSinceLastTick = timeStamp - context.lastTickTimeStamp;
+    const elapsedTimeSinceLastUpdate = timeStamp - context.lastUpdateTimeStamp;
     if (
-      (elapsedTimeSinceLastTick < MIN_PERIOD && !context.killed) ||
+      (elapsedTimeSinceLastUpdate < MIN_PERIOD && !context.killed) ||
       update(context, timeStamp)
     ) {
       schedule(context, tick);
     } else {
       clean(context);
     }
+  }
+
+  function getElapsedTime(context) {
+    return context.lastUpdateTimeStamp - context.initTimeStamp;
+  }
+
+  function getElapsedTimeRatio(context) {
+    const { totalTime } = context;
+    return Math.min(getElapsedTime(context), totalTime) / totalTime;
   }
 
   function clean(context) {
@@ -129,6 +154,7 @@ define(function () {
   function create(targetCanvas, totalTime, numberOfTasks) {
     const taskTime = totalTime / numberOfTasks;
     return Object.seal({
+      kicked: false,
       killed: false,
       targetCanvas,
       totalTime,
@@ -140,8 +166,7 @@ define(function () {
       currentTaskCompleted: false,
       initTimeStamp: 0,
       endTimeStamp: 0,
-      lastTickTimeStamp: 0,
-      currentTaskInitTimeStamp: 0,
+      lastUpdateTimeStamp: 0,
       timerId: 0
     });
   }
@@ -149,6 +174,15 @@ define(function () {
   /**
    * API
    */
+
+  function kick(context) {
+    if (!context.kicked) {
+      context.kicked = true;
+      schedule(context, init);
+      return true;
+    }
+    return false;
+  }
 
   function walk(context) {
     if (!context.killed) {
@@ -168,11 +202,12 @@ define(function () {
       totalTime > 0 &&
       numberOfTasks > 0
     ) {
-      const context = schedule(create(targetCanvas, totalTime * 1000, numberOfTasks), init);
+      const context = create(targetCanvas, totalTime * 1000, numberOfTasks);
       if (typeof callback === 'function') {
         contextCallbacks.set(context, callback);
       }
       return Object.freeze({
+        kick: bind(kick, context),
         walk: bind(walk, context),
         kill: bind(kill, context)
       });

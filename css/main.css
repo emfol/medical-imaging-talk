@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --timer-size: 48px;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -32,4 +36,23 @@ main > article {
   top: 100vh;
   left: 0;
   opacity: 0;
+  transition: top 0.8s ease, opacity 0.8s linear;
+}
+
+section.timer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--timer-size);
+  height: var(--timer-size);
+  z-index: 99999;
+}
+
+section.timer > canvas {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: var(--timer-size);
+  height: var(--timer-size);
 }

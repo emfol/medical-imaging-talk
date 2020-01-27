@@ -7,7 +7,7 @@ main {
   font-weight: 600;
   line-height: 1em;
   color: #fff;
-  background-image: url('../images/texture-c.jpg');
+  background-image: url('../images/texture.jpg');
   background-position: 50% 50%;
   background-repeat: repeat;
   background-color: #777;
@@ -19,20 +19,61 @@ main > article {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* Temp */
-  top: 0;
-  opacity: 1;
 }
 
 main > article > h1 {
   margin: 0.56em 0;
 }
 
-main > article > ul {
+main > article > div.default-content ul {
   /*
   list-style-type: "\1F449";
   list-style-type: "\2714";
   list-style-type: "\264F";
   */
   list-style-type: "\1F680";
+}
+
+main > article > div.default-content img {
+  margin: 24px 0;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.72);
+}
+
+main > article > div > div#dicomImageLungCt {
+  margin: 24px 0 0 0;
+  width: 480px;
+  height: 480px;
+}
+
+main > article > div.default-content > div#dicomImageLungCtInfo {
+  margin: 24px 0 0 0;
+  font-size: 40px;
+  text-align: center;
+}
+
+main > article > div.default-content > div#dicomImageLungCtButton {
+  text-align: center;
+}
+
+main > article > div.default-content > div#dicomImageLungCtButtons > button {
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background: none #ddd;
+  border: 0 none;
+  white-space: nowrap;
+  padding: 8px 16px;
+  line-height: 1.4em;
+  border-radius: 4px;
+}
+
+div.footnotes {
+  margin: 24px 0 0 0;
+  font-size: 24px;
+}
+
+div.footnotes a {
+  color: #fff;
 }

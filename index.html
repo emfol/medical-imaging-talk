@@ -5,6 +5,9 @@
     <title>Medical Imaging on the Web</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <!-- Examples -->
+    <script type="text/javascript" src="js/examples/cornerstone.js"></script>
+    <script type="text/javascript" src="js/examples/exampleImageIdLoaderCt.js"></script>
   </head>
   <body>
     <main>
@@ -12,25 +15,69 @@
       <article>
         <!-- Who am I? Are you sure you wanna know? -->
         <h1>#who_am_i</h1>
-        <ul>
-          <li>Emanuel Fiuza de Oliveira &lt;emfolg@gmail.com&gt;</li>
-          <li>#human_32yo</li>
-          <li>#father_of_a_boy</li>
-          <li>#husband_of_a_beautiful_wife</li>
-          <li>#works_with_web_for_10y_plus</li>
-          <li>#works_with_medica_imaging_for_3y</li>
-        </ul>
+        <div class="default-content">
+          <ul>
+            <li>Emanuel Fiuza de Oliveira &lt;emfolg@gmail.com&gt;</li>
+            <li>#human_30y_plus</li>
+            <li>#father_of_a_boy</li>
+            <li>#husband_of_a_beautiful_wife</li>
+            <li>#works_with_web_for_10y_plus</li>
+            <li>#works_with_medica_imaging_for_3y_plus</li>
+          </ul>
+        </div>
+      </article>
+
+      <article>
+        <h1>#motivation</h1>
+        <div class="default-content">
+          <ul>
+            <li>#draw_community_attention_to_medical_imaging</li>
+            <li>#advertise_open_source_medical_imaging_projects</li>
+          </ul>
+        </div>
       </article>
 
       <article>
         <h1>#what_some_think_it_is</h1>
-        <div class="default-session-content">
-          <img src="">
+        <div class="default-content">
+          <img src="images/2646794.jpg" width="800" />
+          <div class="footnotes">
+            <a href="http://www.freepik.com">Designed by Freepik</a>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <h1>#or_this</h1>
+        <div class="default-content">
+          <img src="images/3299771.jpg" width="800" />
+          <div class="footnotes">
+            <a href="http://www.freepik.com">Designed by Freepik</a>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <h1>#what_it_actually_is</h1>
+        <div class="default-content">
+          <div id="dicomImageLungCt"></div>
+          <div id="dicomImageLungCtInfo">...</div>
+          <div id="dicomImageLungCtButtons">
+            <button data-preset="softtissue">Soft Tissue</button>
+            <button data-preset="lung">Lung</button>
+            <button data-preset="bone">Bone</button>
+          </div>
+          <div class="footnotes">
+            * Extracted from <a href="https://rawgit.com/cornerstonejs/cornerstone/master/example/ctimage/index.html">Cornerstone.js Examples</a>
+          </div>
         </div>
       </article>
 
     </main>
-    <section class="timer"><canvas /></section>
+    <section class="timer"><canvas width="48" height="48"></canvas></section>
+    <!-- Main Script -->
     <script type="text/javascript" src="js/lib/require.js" data-main="js/main"></script>
+    <!-- Examples -->
+    <script type="text/javascript" src="js/examples/cornerstone-examples.js"></script>
   </body>
 </html>
