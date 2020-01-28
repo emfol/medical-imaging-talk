@@ -4,6 +4,7 @@ define([
   'stopwatch',
   'slide-controls',
 ], function (query, stopwatch, slideControls) {
+  'use strict';
 
   function onSlideChange(context, e, action, actions) {
     if (e.shiftKey && action === 'next') {

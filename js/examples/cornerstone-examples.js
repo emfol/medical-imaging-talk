@@ -1,6 +1,21 @@
 
 (function (cornerstone) {
 
+  function initCornerstone() {
+    // Externals
+    cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
+    cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
+    cornerstoneTools.external.cornerstoneMath = cornerstoneMath;
+    cornerstoneTools.external.cornerstone = cornerstone;
+    cornerstoneTools.external.Hammer = Hammer;
+  }
+
+  function initCornerstoneTools() {
+    cornerstoneTools.init({
+      showSVGCursors: true,
+    });
+  }
+
   function setupLungCt() {
     const presets = {
       softtissue: [400, 20],
@@ -67,6 +82,40 @@
     });
   }
 
+  function setupLengthToolExotic() {
+    const element = document.getElementById('dicomImageLengthToolExotic');
+    cornerstone.enable(element);
+    const toolName = 'Length';
+    const imageIds = [
+      `wadouri:images/dicom/exotic-1.dcm`,
+      `wadouri:images/dicom/exotic-2.dcm`,
+    ];
+
+    const stack = {
+      currentImageIdIndex: 0,
+      imageIds: imageIds,
+    };
+
+    cornerstone.loadImage(imageIds[0]).then(function (image) {
+      cornerstoneTools.addStackStateManager(element, ['stack']);
+      cornerstoneTools.addToolState(element, 'stack', stack);
+      cornerstone.displayImage(element, image);
+    });
+
+    // Add the tool
+    const apiTool = cornerstoneTools[`${toolName}Tool`];
+    cornerstoneTools.addToolForElement(element, apiTool);
+    cornerstoneTools.setToolActiveForElement(
+      element,
+      toolName,
+      { mouseButtonMask: 1 },
+      ['Mouse']
+    );
+  }
+
+  initCornerstone();
+  initCornerstoneTools();
   setupLungCt();
+  setupLengthToolExotic();
 
 }(cornerstone));

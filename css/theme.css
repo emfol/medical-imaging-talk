@@ -1,9 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
+:root {
+  --max-viewport-width: 1024px; /* 1280px */
+  --max-viewport-height: 768px; /* 720px */
+  --max-content-width: 960px;
+  --max-content-height: 640px;
+}
+
 main {
   font-family: 'Lato', Helvetica, Arial, sans-serif;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.56);
-  font-size: 56px;
+  text-shadow: 3px 2px 0 rgba(0, 0, 0, 0.72);
+  font-size: 48px;
   font-weight: 600;
   line-height: 1em;
   color: #fff;
@@ -14,22 +21,41 @@ main {
   background-attachment: fixed;
 }
 
-main > article {
+main > article a {
+  color: #fff;
+}
+
+main > article > div.viewport {
+  position: absolute;
+  overflow: hidden;
+  width: var(--max-viewport-width);
+  height: var(--max-viewport-height);
+  max-width: var(--max-viewport-width);
+  max-height: var(--max-viewport-height);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Presentation of Child Nodes */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-main > article > h1 {
+main > article > div.viewport > h1 {
   margin: 0.56em 0;
 }
 
-main > article > div.default-content {
-  max-width: 1280px;
+main > article > div.viewport div.default-content {
+  max-width: var(--max-content-width);
 }
 
-main > article > div.default-content ul {
+main > article > div.viewport div.default-content p {
+  font-size: 40px;
+  margin: 8px 2px;
+}
+
+main > article > div.viewport div.default-content ul {
   /*
   list-style-type: "\1F449";
   list-style-type: "\2714";
@@ -39,47 +65,74 @@ main > article > div.default-content ul {
   list-style-type: "\1F489";
 }
 
-main > article > div.default-content img {
+main > article > div.viewport div.default-content img {
   margin: 24px 0;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.72);
 }
 
-main > article > div > div#dicomImageLungCt {
+main > article > div.viewport div#dicomImageLungCt {
   margin: 24px 0 0 0;
-  width: 480px;
-  height: 480px;
+  width: 432px;
+  height: 432px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.72);
 }
 
-main > article > div.default-content > div#dicomImageLungCtInfo {
+main > article > div.viewport div#dicomImageLungCtInfo {
   margin: 24px 0 0 0;
   font-size: 40px;
   text-align: center;
 }
 
-main > article > div.default-content > div#dicomImageLungCtButton {
+main > article > div.viewport div#dicomImageLungCtButtons {
   text-align: center;
 }
 
-main > article > div.default-content > div#dicomImageLungCtButtons > button {
+main > article > div.viewport div#dicomImageLengthToolExotic {
+  margin: 24px 0 0 0;
+  width: 640px;
+  height: 489px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.72);
+}
+
+main > article > div.viewport div#dicomImageLungCtButtons button {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 20px;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   background: none #ddd;
   border: 0 none;
   white-space: nowrap;
-  padding: 8px 16px;
-  line-height: 1.4em;
-  border-radius: 4px;
+  padding: 4px 12px;
+  line-height: 1em;
+  border-radius: 12px;
+}
+
+main > article > div.viewport.the-modalities > div.the-modality-image {
+  display: none;
+  position: absolute;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  max-width: var(--max-content-width);
+  max-height: var(--max-content-height);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.72);
+}
+
+main > article > div.viewport.the-modalities div.the-modality-image img {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+  outline: 0 none;
+  max-width: var(--max-content-width);
+  max-height: var(--max-content-height);
 }
 
 div.footnotes {
-  margin: 24px 0 0 0;
-  font-size: 24px;
-}
-
-div.footnotes a {
-  color: #fff;
+  margin: 16px 0 0 0;
+  font-size: 26px;
 }

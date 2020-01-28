@@ -1,5 +1,6 @@
 
 define(function () {
+  'use strict';
 
   const SLIDE_SELECTOR = 'article';
 
