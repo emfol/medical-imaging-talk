@@ -62,10 +62,15 @@ define(function () {
         first_attempt_of_standardization_in_1983: 'Primeira tentativa de padronização em 1983',
         third_version_of_the_standard_in_1993: 'Terceira versão do padrão em 1993',
         support_for_local_area_networks: 'Supporte para conexões locais e TCP/IP',
-        the_open_source_projects: 'Projetos Open-Source'
+        the_open_source_projects: 'Projetos Open-Source',
+        medical_imaging_reaches_the_web_thanks_to_Chris_Hafey: 'Graças aos esforços de Chris Hafey, as Imagens Médicas chegam à Web!',
+        thread_on_google_groups: 'Thread no Google Groups',
+        OHIF_is_born: 'Graças à Chris Hafey, Gordon Harris e Rob Lewis a fundação Open Health Imaging Foundation (OHIF) nasceu',
+        d3_graphics_on_the_Web: '3D graphics on the Web!'
       },
       en_US: {
-        hand_with_rings: 'Hand with Rings: print of Wilhelm Röntgen\'s first "medical" X-ray, of his wife\'s hand'
+        hand_with_rings: 'Hand with Rings: print of Wilhelm Röntgen\'s first "medical" X-ray, of his wife\'s hand',
+        medical_imaging_reaches_the_web_thanks_to_Chris_Hafey: 'Thanks to Chris Hafey, Medical Imaging reaches the Web!'
       }
     }
   }
