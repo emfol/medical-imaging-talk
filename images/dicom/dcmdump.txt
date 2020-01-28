@@ -1,0 +1,89 @@
+
+# Dicom-File-Format
+
+# Dicom-Meta-Information-Header
+# Used TransferSyntax: Little Endian Explicit
+(0002,0000) UL 188                                      #   4, 1 FileMetaInformationGroupLength
+(0002,0001) OB 00\01                                    #   2, 1 FileMetaInformationVersion
+(0002,0002) UI =SecondaryCaptureImageStorage            #  26, 1 MediaStorageSOPClassUID
+(0002,0003) UI [1.2.276.0.74.3.1167540280.200511.112514.1.1.4] #  46, 1 MediaStorageSOPInstanceUID
+(0002,0010) UI =LittleEndianImplicit                    #  18, 1 TransferSyntaxUID
+(0002,0012) UI [1.2.276.0.2783747.3.0.3.6.2]            #  28, 1 ImplementationClassUID
+(0002,0013) SH [Asteris Keystone]                       #  16, 1 ImplementationVersionName
+
+# Dicom-Data-Set
+# Used TransferSyntax: Little Endian Implicit
+(0008,0008) CS [DERIVED\SECONDARY]                      #  18, 2 ImageType
+(0008,0016) UI =SecondaryCaptureImageStorage            #  26, 1 SOPClassUID
+(0008,0018) UI [1.2.276.0.74.3.1167540280.200511.112514.1.1.4] #  46, 1 SOPInstanceUID
+(0008,0020) DA [20050101]                               #   8, 1 StudyDate
+(0008,0021) DA [20050101]                               #   8, 1 SeriesDate
+(0008,0022) DA [20050101]                               #   8, 1 AcquisitionDate
+(0008,0030) TM [112514.000000]                          #  14, 1 StudyTime
+(0008,0031) TM [112514.000000]                          #  14, 1 SeriesTime
+(0008,0032) TM [112514.000000]                          #  14, 1 AcquisitionTime
+(0008,0050) SH (no value available)                     #   0, 0 AccessionNumber
+(0008,0060) CS [DX]                                     #   2, 1 Modality
+(0008,0070) LO [EponaTech]                              #  10, 1 Manufacturer
+(0008,0080) LO (no value available)                     #   0, 0 InstitutionName
+(0008,0090) PN (no value available)                     #   0, 0 ReferringPhysicianName
+(0008,1030) LO (no value available)                     #   0, 0 StudyDescription
+(0008,103e) LO (no value available)                     #   0, 0 SeriesDescription
+(0008,1048) PN (no value available)                     #   0, 0 PhysiciansOfRecord
+(0008,1050) PN (no value available)                     #   0, 0 PerformingPhysicianName
+(0008,1060) PN (no value available)                     #   0, 0 NameOfPhysiciansReadingStudy
+(0008,1070) PN (no value available)                     #   0, 0 OperatorsName
+(0008,1090) LO [Metron-DVM]                             #  10, 1 ManufacturerModelName
+(0010,0010) PN [Zoo-Exotic]                             #  10, 1 PatientName
+(0010,0020) LO [Examples]                               #   8, 1 PatientID
+(0010,0030) DA [19000101]                               #   8, 1 PatientBirthDate
+(0010,0040) CS [M]                                      #   2, 1 PatientSex
+(0010,1002) SQ (Sequence with undefined length #=0)     # u/l, 1 OtherPatientIDsSequence
+(fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+(0010,2201) LO [Cat]                                    #   4, 1 PatientSpeciesDescription
+(0010,2202) SQ (Sequence with undefined length #=1)     # u/l, 1 PatientSpeciesCodeSequence
+  (fffe,e000) na (Item with undefined length #=3)         # u/l, 1 Item
+    (0008,0100) SH [L-80A00]                                #   8, 1 CodeValue
+    (0008,0102) SH [SRT]                                    #   4, 1 CodingSchemeDesignator
+    (0008,0104) LO [Cat]                                    #   4, 1 CodeMeaning
+  (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+(fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+(0010,2203) CS [UNALTERED]                              #  10, 1 PatientSexNeutered
+(0010,2292) LO [--Unknown--]                            #  12, 1 PatientBreedDescription
+(0010,2293) SQ (Sequence with undefined length #=0)     # u/l, 1 PatientBreedCodeSequence
+(fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+(0010,2294) SQ (Sequence with undefined length #=0)     # u/l, 1 BreedRegistrationSequence
+(fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+(0010,2297) PN [^^^^]                                   #   4, 1 ResponsiblePerson
+(0010,2298) CS (no value available)                     #   0, 0 ResponsiblePersonRole
+(0010,2299) LO (no value available)                     #   0, 0 ResponsibleOrganization
+(0018,0015) CS [EXTREMITY]                              #  10, 1 BodyPartExamined
+(0018,1020) LO [5.26]                                   #   4, 1 SoftwareVersions
+(0018,1164) DS [0.1426966\0.1426966]                    #  20, 2 ImagerPixelSpacing
+(0018,5101) CS (no value available)                     #   0, 0 ViewPosition
+(0020,000d) UI [1.2.276.0.74.3.1167540280.200511.112514.1] #  42, 1 StudyInstanceUID
+(0020,000e) UI [1.2.276.0.74.3.1167540280.200511.112514.1.1] #  44, 1 SeriesInstanceUID
+(0020,0010) SH [200511.112514.1]                        #  16, 1 StudyID
+(0020,0011) IS [1]                                      #   2, 1 SeriesNumber
+(0020,0013) IS [4]                                      #   2, 1 InstanceNumber
+(0020,0020) CS (no value available)                     #   0, 0 PatientOrientation
+(0028,0002) US 3                                        #   2, 1 SamplesPerPixel
+(0028,0004) CS [RGB]                                    #   4, 1 PhotometricInterpretation
+(0028,0006) US 0                                        #   2, 1 PlanarConfiguration
+(0028,0010) US 2179                                     #   2, 1 Rows
+(0028,0011) US 2857                                     #   2, 1 Columns
+(0028,0030) DS [0.1426966\0.1426966]                    #  20, 2 PixelSpacing
+(0028,0100) US 8                                        #   2, 1 BitsAllocated
+(0028,0101) US 8                                        #   2, 1 BitsStored
+(0028,0102) US 7                                        #   2, 1 HighBit
+(0028,0103) US 0                                        #   2, 1 PixelRepresentation
+(0028,0106) US 0                                        #   2, 1 SmallestImagePixelValue
+(0028,0107) US 255                                      #   2, 1 LargestImagePixelValue
+(0028,0301) CS [NO]                                     #   2, 1 BurnedInAnnotation
+(0028,1050) DS [127.]                                   #   4, 1 WindowCenter
+(0028,1051) DS [255.]                                   #   4, 1 WindowWidth
+(0028,2110) CS (no value available)                     #   0, 0 LossyImageCompression
+(2929,0037) LO [Metron Private Data]                    #  20, 1 PrivateCreator
+(2929,3701) ?? 36\31\36\20                              #   4, 1 Unknown Tag & Data
+(2929,3702) ?? 02\00\00\00\04\35\2e\32\36\01\00\00\00\08\73\6b\65\6c\65\74\61\6c... # 616, 1 Unknown Tag & Data
+(7fe0,0010) OW 9b9b\959b\9595\9797\9697\9696\9696\9996\9999\9494\9294\9292\8d8d... # 18676210, 1 PixelData

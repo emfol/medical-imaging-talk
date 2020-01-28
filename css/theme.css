@@ -55,6 +55,14 @@ main > article > div.viewport div.default-content p {
   margin: 8px 2px;
 }
 
+main > article > div.viewport div.default-content textarea {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 960px;
+  height: 580px;
+}
+
 main > article > div.viewport div.default-content ul {
   /*
   list-style-type: "\1F449";

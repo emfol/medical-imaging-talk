@@ -56,7 +56,13 @@ define(function () {
         that_shadowy_place_is_medical_images: 'São as imagens médicas...',
         a_bit_of_history: 'Um pouco de história...',
         hand_with_rings: 'Mão com anéis: Primeiro Raio-X "médico" da esposa de Wilhelm Röntgen',
-        xrays_more_more_than_40y_later: 'Mais de 40 anos depois...'
+        xrays_more_more_than_40y_later: 'Mais de 40 anos depois...',
+        only_manufacturers_could_decode_their_images: 'Só os próprios fabricantes podiam decodificar as imagens',
+        little_to_no_integration: 'Interoperabilidade nula ou limitada...',
+        first_attempt_of_standardization_in_1983: 'Primeira tentativa de padronização em 1983',
+        third_version_of_the_standard_in_1993: 'Terceira versão do padrão em 1993',
+        support_for_local_area_networks: 'Supporte para conexões locais e TCP/IP',
+        the_open_source_projects: 'Projetos Open-Source'
       },
       en_US: {
         hand_with_rings: 'Hand with Rings: print of Wilhelm Röntgen\'s first "medical" X-ray, of his wife\'s hand'
