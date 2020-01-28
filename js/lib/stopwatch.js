@@ -34,7 +34,7 @@ define(function () {
     }
   }
 
-  function render(context) {
+  function renderCircle(context) {
     const { targetCanvas } = context;
     const { width, height } = targetCanvas;
     const r = Math.min(width, height) * 0.5 - 2.0;
@@ -49,6 +49,21 @@ define(function () {
     g.lineTo(Math.cos(a) * r, Math.sin(a) * r);
     g.arc(0.0, 0.0, r, a, CIRC, false);
     g.fill();
+  }
+
+  function renderRects(context) {
+    const { targetCanvas } = context;
+    const { width, height } = targetCanvas;
+    const g = targetCanvas.getContext('2d');
+    const w = width * 0.5;
+    const totalRatio = getElapsedTimeRatio(context);
+    const taskRatios = getTaskTimeRatios(context);
+    g.setTransform(1.0, 0.0, 0.0, 1.0, 0.0, 0.0);
+    g.clearRect(0, 0, width, height);
+    g.fillStyle = '#0f4c75'; // dark blue
+    g.fillRect(w, 0, w, (1 - totalRatio) * height);
+    g.fillStyle = '#3282b8'; // light blue
+    g.fillRect(0, 0, w, (1 - taskRatios.total) * height);
   }
 
   function schedule(context, action) {
@@ -77,8 +92,10 @@ define(function () {
         const nextTaskStats = getCurrentTaskStats(context);
         nextTaskStats.initTimeStamp = timeStamp;
         context.currentTaskCompleted = false;
-        context.cumulativeTaskTime =
-          (context.totalTime - elapsedTime) / context.numberOfTasksRemaining;
+        context.cumulativeTaskTime = Math.max(
+          (context.totalTime - elapsedTime) / context.numberOfTasksRemaining,
+          1
+        );
       }
     }
 
@@ -92,7 +109,11 @@ define(function () {
     }
 
     // Request view update
-    render(context);
+    if (context.renderer === 'fancy') {
+      renderCircle(context);
+    } else {
+      renderRects(context);
+    }
 
     return shouldResetTimer;
   }
@@ -114,9 +135,21 @@ define(function () {
     return context.lastUpdateTimeStamp - context.initTimeStamp;
   }
 
+  function getElapsedTaskTime(context) {
+    const stats = getCurrentTaskStats(context);
+    return context.lastUpdateTimeStamp - stats.initTimeStamp;
+  }
+
   function getElapsedTimeRatio(context) {
     const { totalTime } = context;
     return Math.min(getElapsedTime(context), totalTime) / totalTime;
+  }
+
+  function getTaskTimeRatios(context) {
+    const { cumulativeTaskTime } = context;
+    return {
+      total: Math.min(getElapsedTaskTime(context), cumulativeTaskTime) / cumulativeTaskTime
+    }
   }
 
   function clean(context) {
@@ -168,6 +201,7 @@ define(function () {
       initTimeStamp: 0,
       endTimeStamp: 0,
       lastUpdateTimeStamp: 0,
+      renderer: null,
       timerId: 0
     });
   }
